@@ -1,5 +1,5 @@
 # Node
-**Repo for learning and practising node.js**
+**Repo to learn and practice node.js**
 
 Install Node Version Manager: <br>
 
