@@ -1,28 +1,19 @@
-const fs = require('fs');
+const express = require('express');
+const app = express();
 
-// const testContent = fs.readFileSync('./test.js', {
-//     encoding: 'utf-8',
-// });
+const port = process.env.PORT || 8080;
+app.set('view-engine', 'ejs');
 
-// const asynread = fs.readFile('./test.js', 'utf-8', (err, data) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log(data);
-//     }
-// });
-const data = {
-    iceberg: 'troll',
-    wacek: 'teges',
-};
+app.get('/', (req, res) => {
+    res.render('index.ejs', { name: 'Pawel' });
+});
+app.get('/login', (req, res) => {
+    res.render('login.ejs', { name: 'Pawel' });
+});
+app.get('/register', (req, res) => {
+    res.render('register.ejs', { name: 'Pawel' });
+});
 
-function write(data) {
-    fs.writeFileSync('./test.json', JSON.stringify(data), (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('object written');
-        }
-    });
-}
-write(data);
+app.listen(port, () => {
+    console.log(`App runs on port: ${port}`);
+});
