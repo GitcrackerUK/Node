@@ -21,22 +21,19 @@ app.post('/login', (req, res) => {});
 app.get('/register', (req, res) => {
     res.render('register.ejs', { name: 'Pawel' });
 });
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     try {
-        const hashedPass = bcrypt.hash(req.body.password, 10);
+        const hashedPass = await bcrypt.hash(req.body.password, 10);
         store.push({
             id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
             password: hashedPass,
         });
+        console.log(store);
     } catch {
         res.redirect('/register');
     }
-    (async function () {
-        await store[0].password;
-        console.log(store);
-    })();
     res.redirect('/login');
 });
 
