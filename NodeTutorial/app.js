@@ -11,7 +11,7 @@ app.use(express.json());
 const store = [];
 
 app.get('/', (req, res) => {
-    res.render('index.ejs', { name: 'Pawel' });
+    res.render('index.ejs');
 });
 app.get('/login', (req, res) => {
     res.render('login.ejs', { name: 'Pawel' });
